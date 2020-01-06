@@ -15,6 +15,7 @@ namespace RemoteCIMPC
         TxtHelper txthelper = new TxtHelper();
         SelectHelper select = new SelectHelper();
         TreeNode clickNode = new TreeNode();
+        //ExcelHelper excelHelper = new ExcelHelper();
 
         public Remote()
         {
@@ -23,6 +24,7 @@ namespace RemoteCIMPC
 
         private void Remote_Load(object sender, EventArgs e)
         {
+            //ExcelHelper.readExcel();//ExcelRea part
             this.InitTreeView(treeView1);
             NetDrive.Checked = true; // default use NetDrive
             this.KeyPreview = true; // for HotKey
