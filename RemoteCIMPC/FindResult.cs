@@ -72,7 +72,8 @@ namespace RemoteCIMPC
 
             if (item != null)
             {
-                select.openTree(item.Text);                
+                select.openTree(item.Text);
+                Close();                
             }
         }
 

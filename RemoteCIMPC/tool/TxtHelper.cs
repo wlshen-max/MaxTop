@@ -11,7 +11,7 @@ namespace RemoteCIMPC
     public class TxtHelper
     {
 
-        private static string path = @"ipList.txt"; //publish
+        private static readonly string path = @"tool/data/ipList.txt"; //publish
         private static string textdata = string.Empty;
         private static DataTable datatable;
         private static string[] nodes = null;
@@ -59,7 +59,7 @@ namespace RemoteCIMPC
                     datatable = new DataTable();
                     datatable.Columns.Add("Shop", typeof(string));
                     datatable.Columns.Add("Eqid", typeof(string));
-                    datatable.Columns.Add("Ip", typeof(string));
+                    datatable.Columns.Add("Eqip", typeof(string));
 
                     if (textdata != null)
                     {
@@ -78,7 +78,7 @@ namespace RemoteCIMPC
                             DataRow dr = datatable.NewRow();
                             dr["Shop"] = str[0];
                             dr["Eqid"] = str[1];
-                            dr["Ip"] = str[2];
+                            dr["Eqip"] = str[2];
 
                             datatable.Rows.Add(dr);
                         }
@@ -163,7 +163,7 @@ namespace RemoteCIMPC
         {            
             string Shop = string.Empty;
             string Eqid = string.Empty;
-            string Ip = string.Empty;
+            string Eqip = string.Empty;
             
             try
             {
@@ -173,7 +173,7 @@ namespace RemoteCIMPC
                     string[] eqdata = eqData.Split(':');
                     Shop = eqdata[0];
                     Eqid = eqdata[1];
-                    Ip = eqdata[2];
+                    Eqip = eqdata[2];
                 }
                 else
                 {
@@ -190,7 +190,7 @@ namespace RemoteCIMPC
                             DataRow dr = datatable.NewRow();
                             dr["Shop"] = Shop;
                             dr["Eqid"] = Eqid;
-                            dr["Ip"] = Ip;
+                            dr["Eqip"] = Eqip;
 
                             datatable.Rows.InsertAt(dr, i);
                             break; //插入完成直接跳出，防止重复插入同一项。
@@ -217,7 +217,7 @@ namespace RemoteCIMPC
             //将DataTable覆盖式写入Txt中
             foreach (DataRow dr in dt.Rows)
             {
-                temp = temp + dr["Shop"] + ":" + dr["Eqid"] + ":" + dr["Ip"] + "\r\n";
+                temp = temp + dr["Shop"] + ":" + dr["Eqid"] + ":" + dr["Eqip"] + "\r\n";
             }
             File.WriteAllText(path, temp);//覆盖写入
             remote.BuildingTree(txtToTable());//重载入刷新TreeView

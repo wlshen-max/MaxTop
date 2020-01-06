@@ -15,6 +15,7 @@ namespace RemoteCIMPC
         TxtHelper txthelper = new TxtHelper();
         SelectHelper select = new SelectHelper();
         TreeNode clickNode = new TreeNode();
+        SqlHelper sqlhelper = new SqlHelper();
         //ExcelHelper excelHelper = new ExcelHelper();
 
         public Remote()
@@ -24,12 +25,12 @@ namespace RemoteCIMPC
 
         private void Remote_Load(object sender, EventArgs e)
         {
-            //ExcelHelper.readExcel();//ExcelRea part
             this.InitTreeView(treeView1);
             NetDrive.Checked = true; // default use NetDrive
             this.KeyPreview = true; // for HotKey
             //调用BuildingTree方法数据来自txthelper.txtToTable
             this.BuildingTree(txthelper.txtToTable());
+            sqlhelper.setDtToSql(txthelper.txtToTable());
         }
 
         public void frmReload()
@@ -128,7 +129,7 @@ namespace RemoteCIMPC
                     // 新建根节点并载入他的第一个子节点
                     Node.Text = dt.Rows[i]["Shop"].ToString();
                     node1.Text = dt.Rows[i]["Eqid"].ToString();
-                    node2.Text = dt.Rows[i]["Ip"].ToString();
+                    node2.Text = dt.Rows[i]["Eqip"].ToString();
                     node1.Nodes.Add(node2);
                     Node.Nodes.Add(node1);
                     treeView1.Nodes.Add(Node);
@@ -141,7 +142,7 @@ namespace RemoteCIMPC
 
                     //已存在的根节点下新建子节点数据
                     node1.Text = dt.Rows[i]["Eqid"].ToString();
-                    node2.Text = dt.Rows[i]["Ip"].ToString();
+                    node2.Text = dt.Rows[i]["Eqip"].ToString();
                     Node.Nodes.Add(node1);
                     node1.Nodes.Add(node2);
                 }
@@ -294,8 +295,17 @@ namespace RemoteCIMPC
 
             string cmd = string.Format(@"explorer \\{0}", eqip);
             CmdHelper.RunCmd(cmd);
-
         }
+
+        private void gotoErrorLogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string eqip = getIpByNode(clickNode);
+
+            string cmd = string.Format(@"explorer \\{0}\d\log\server\error", eqip);
+            CmdHelper.RunCmd(cmd);
+        }
+
+
 
         private void appVersionToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -376,7 +386,6 @@ namespace RemoteCIMPC
                 return String.Empty;
             }
         }
-
 
 
     }

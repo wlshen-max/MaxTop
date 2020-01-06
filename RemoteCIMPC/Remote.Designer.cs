@@ -53,6 +53,7 @@ namespace RemoteCIMPC
             this.remoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.netDriveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.appVersionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gotoErrorLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -207,30 +208,38 @@ namespace RemoteCIMPC
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.remoteToolStripMenuItem,
             this.netDriveToolStripMenuItem,
-            this.appVersionToolStripMenuItem});
+            this.appVersionToolStripMenuItem,
+            this.gotoErrorLogToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(162, 114);
             // 
             // remoteToolStripMenuItem
             // 
             this.remoteToolStripMenuItem.Name = "remoteToolStripMenuItem";
-            this.remoteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.remoteToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.remoteToolStripMenuItem.Text = "Remote";
             this.remoteToolStripMenuItem.Click += new System.EventHandler(this.remoteToolStripMenuItem_Click);
             // 
             // netDriveToolStripMenuItem
             // 
             this.netDriveToolStripMenuItem.Name = "netDriveToolStripMenuItem";
-            this.netDriveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.netDriveToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.netDriveToolStripMenuItem.Text = "NetDrive";
             this.netDriveToolStripMenuItem.Click += new System.EventHandler(this.netDriveToolStripMenuItem_Click);
             // 
             // appVersionToolStripMenuItem
             // 
             this.appVersionToolStripMenuItem.Name = "appVersionToolStripMenuItem";
-            this.appVersionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.appVersionToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.appVersionToolStripMenuItem.Text = "App Version";
             this.appVersionToolStripMenuItem.Click += new System.EventHandler(this.appVersionToolStripMenuItem_Click);
+            // 
+            // gotoErrorLogToolStripMenuItem
+            // 
+            this.gotoErrorLogToolStripMenuItem.Name = "gotoErrorLogToolStripMenuItem";
+            this.gotoErrorLogToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.gotoErrorLogToolStripMenuItem.Text = "Goto ErrorLog";
+            this.gotoErrorLogToolStripMenuItem.Click += new System.EventHandler(this.gotoErrorLogToolStripMenuItem_Click);
             // 
             // Remote
             // 
@@ -279,6 +288,7 @@ namespace RemoteCIMPC
         private ToolStripMenuItem remoteToolStripMenuItem;
         private ToolStripMenuItem netDriveToolStripMenuItem;
         private ToolStripMenuItem appVersionToolStripMenuItem;
+        private ToolStripMenuItem gotoErrorLogToolStripMenuItem;
     }
 }
 
